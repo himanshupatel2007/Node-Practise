@@ -1,31 +1,20 @@
-const http = require("http");
-const fs = require("fs");
-const url = require("url")
+const express = require("express");
+const app = express();
+const PORT = 3000;
 
-const myserver = http.createServer((req, res) => {
-  console.log("Request recieved in the server ");
-  const myURL = url.parse(req.url)
-  const log = `request recieved at URL :${req.url} with method:${req.method}\n *`;
-  fs.appendFile("./information.txt", log, (error) => {
-    if (myURL.pathname) {
-      console.log("Error writing file:", error);
-    }
-  });
-  switch (req.url) {
-    case "/home":
-      res.end("Response from Home Page");
-      break;
-    case "/about":
-      res.end("Response from About page");
-      break;
-    case "/contact":
-      res.end("response from Contact Page");
-      break;
+app.get("/",(req,res)=>{
+  console.log("Request recieved at /")
+  res.end("Response from Home page")
+})
+app.get("/about",(req,res)=>{
+  console.log("Request recieved at /about")
+  res.end("Response from about page")
+})
+app.get("/contact",(req,res)=>{
+  console.log("Request recieved at /contact")
+  res.end("Response from contact page")
+})
 
-    default:
-      res.end("404 Not Found");
-  }
-});
-myserver.listen(8000, () => {
-  console.log("Server Started Successfully");
-});
+app.listen(3000,()=>{
+  console.log(`Server started at PORT:${PORT}`)
+})
