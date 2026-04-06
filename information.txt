@@ -1,1 +1,11 @@
-Hello from NodejsBye from NodeJs17754673238001775467324008request recieved at URL :/request recieved at URL :/favicon.icorequest recieved at URL :/request recieved at URL :/favicon.icorequest recieved at URL :/homerequest recieved at URL :/favicon.icorequest recieved at URL :/aboutrequest recieved at URL :/favicon.icorequest recieved at URL :/contactrequest recieved at URL :/favicon.ico
+request recieved at URL :/home with method:GET
+ *request recieved at URL :/favicon.ico with method:GET
+ *request recieved at URL :/home with method:GET
+ *request recieved at URL :/favicon.ico with method:GET
+ *request recieved at URL :/home with method:GET
+ *request recieved at URL :/favicon.ico with method:GET
+ *request recieved at URL :/about with method:GET
+ *request recieved at URL :/favicon.ico with method:GET
+ *request recieved at URL :/contact with method:GET
+ *request recieved at URL :/favicon.ico with method:GET
+ *

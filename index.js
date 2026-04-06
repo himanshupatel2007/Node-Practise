@@ -1,12 +1,13 @@
 const http = require("http");
 const fs = require("fs");
-const { error } = require("console");
+const url = require("url")
 
 const myserver = http.createServer((req, res) => {
   console.log("Request recieved in the server ");
-  const log = `request recieved at URL :${req.url}`;
+  const myURL = url.parse(req.url)
+  const log = `request recieved at URL :${req.url} with method:${req.method}\n *`;
   fs.appendFile("./information.txt", log, (error) => {
-    if (error) {
+    if (myURL.pathname) {
       console.log("Error writing file:", error);
     }
   });
