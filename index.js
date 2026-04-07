@@ -4,6 +4,16 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(express.urlencoded());
+
+app.use((req,res,next)=>{
+  fs.appendFile("./Middlewareslog.txt",`${Date.now()} request resolved by hte middleware of ${req.method}`,(err)=>{
+    if(err){
+      console.log(`Error:${err}`)
+    }
+  })
+  next();
+})
 
 app.get("/users", (req, res) => {
   fs.readFile("./MOCK_DATA.json", "utf-8", (err, data) => {
