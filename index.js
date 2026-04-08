@@ -1,5 +1,5 @@
 const express = require("express");
-const fs = require("fs");
+const mongoose = require("mongoose")
 const app = express();
 const PORT = 3000;
 
@@ -7,9 +7,10 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.use((req,res,next)=>{
-  fs.appendFile("./Middlewareslog.txt",`${Date.now()} request resolved by hte middleware of ${req.method}`,(err)=>{
+  fs.appendFile("./Middlewareslog.txt",`${Date.now()} request resolved by hte middleware of ${req.method}\n`,(err)=>{
     if(err){
       console.log(`Error:${err}`)
+
     }
   })
   next();
