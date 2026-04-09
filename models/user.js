@@ -13,12 +13,15 @@ const userSchema = new mongoose.Schema({
   },
   age: {
     type: Number,
-    required: true,
   },
   job_title: {
     type: String,
     required: true,
   },
+  password:{
+    type:String,
+    required:true
+  }
 });
 
 const User = mongoose.model("userData", userSchema);
