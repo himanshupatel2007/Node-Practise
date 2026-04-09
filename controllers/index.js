@@ -70,8 +70,33 @@ async function GetUserById(req, res) {
         })
     }
 }
+async function UpdateUserbyID(req,res){
+   try {
+     const result = User.UpdateUserbyID(req.id,req.body)
+     console.log(`User updated by ID :${req.params.id} : ${result}`)
+   } catch (error) {
+    console.log("Error Updatating User Please try agian");
+    return res.status(500).json({
+        message:"Unable to Update user"
+    })
+   }
+}
+async function DeleteUserByID(req,res){
+    try {
+        const result = User.DeleteUserByID(req.params.id)
+        fs.appendFile("./UserDeleteLog.txt",`${req.params.id} User Deleted ${result}`,(err)=>{
+            console.log("Error deleting User By ID : "+ req.params.id);
+            fs.appendFile("./Error.txt",`${req.url} ${req.prams.id}`)
+        })
+    } catch (error) {
+
+        console.log("Error Deleting User by Id"+ req.params.id)
+    }
+}
 module.exports = {
     GetAllUsers,
     GetUserById,
-    CreateUser
+    CreateUser,
+    UpdateUserbyID,
+    DeleteUserByID,
 }
