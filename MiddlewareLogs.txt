@@ -1,2 +1,5 @@
 1775669965778 request resolved by hte middleware of GET
 1775669981960 request resolved by hte middleware of POST
+1775708194304 request resolved by hte middleware of POST
+1775708216297 request resolved by hte middleware of GET
+1775708245018 request resolved by hte middleware of GET
