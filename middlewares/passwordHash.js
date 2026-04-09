@@ -6,3 +6,4 @@ async function EncryptPassword(req,res,next){
     req.body.password = hashedpassword
     next();
 }
+module.exports = EncryptPassword

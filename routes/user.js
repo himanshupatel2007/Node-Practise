@@ -1,6 +1,7 @@
 const express = require("express");
 
 const userRouter = express.Router();
+const signUp = express()
 const {
   GetAllUsers,
   GetUserById,
@@ -9,7 +10,9 @@ const {
   DeleteUserByID,
 } = require("../controllers");
 
-userRouter.route("/").get(GetAllUsers).post(CreateUser);
+userRouter.get("/",GetAllUsers)
+
+signUp.post("/",CreateUser);
 
 userRouter
   .route("/:id")
@@ -17,4 +20,6 @@ userRouter
   .patch(UpdateUserbyID)
   .delete(DeleteUserByID);
 
-module.exports = userRouter;
+module.exports = {
+  userRouter,signUp
+};
