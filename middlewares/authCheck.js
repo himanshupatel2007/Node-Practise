@@ -1,6 +1,6 @@
 const {verifyUser} = require("../services/jwt.js")
 async function userAuthCheck(req,res,next){
-    const token = req.headers.authentication;
+    const token = req.cookies.token
     if(!token){
         res.status(400).json({
             message:"User not logged in",

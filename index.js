@@ -5,10 +5,13 @@ const {userRouter,signUp} = require("./routes/user");
 const signIn = require("./routes/authentication.js");
 const EncryptPassword = require("./middlewares/passwordHash.js");
 const userAuthCheck = require("./middlewares/authCheck.js")
+const cookiesParser = require("cookie-parser")
+
 const app = express();
 require("dotenv").config()
 const PORT = process.env.PORT
 
+app.use(cookiesParser())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

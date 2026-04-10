@@ -27,9 +27,12 @@ async function handleUserSignIn(req, res) {
         },
       );
      const token =  setUser(user)
-      return res.status(200).json({
+
+      return res.status(200).cookie("token",token,{
+        httpOnly:true,
+        secure:true
+      }).json({
         message: "User Logged in successfully",
-        UserToken : token
       });
     } else {
       return res.status(400).json({
