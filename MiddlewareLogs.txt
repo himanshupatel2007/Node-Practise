@@ -24,3 +24,4 @@
 1775828636268 request resolved by hte middleware of POST
 1775828637567 request resolved by hte middleware of POST
 1775828644273 request resolved by hte middleware of POST
+1775829998206 request resolved by hte middleware of GET

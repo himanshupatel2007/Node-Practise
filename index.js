@@ -3,7 +3,8 @@ const connectMongoDB = require("./mongoDB_connection");
 const LogReqRes = require("./middlewares");
 const {userRouter,signUp} = require("./routes/user");
 const signIn = require("./routes/authentication.js");
-const EncryptPassword = require("./middlewares/passwordHash.js")
+const EncryptPassword = require("./middlewares/passwordHash.js");
+const userAuthCheck = require("./middlewares/authCheck.js")
 const app = express();
 require("dotenv").config()
 const PORT = process.env.PORT
@@ -17,7 +18,7 @@ app.use(LogReqRes("./MiddlewareLogs.txt"));
 connectMongoDB(process.env.db_url);
 
 //routes
-app.use("/users", userRouter);
+app.use("/users",userAuthCheck, userRouter);
 app.use("/signin",signIn);
 app.use("/signup",EncryptPassword,signUp)
 
