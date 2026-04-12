@@ -19,7 +19,7 @@ async function handleUserSignIn(req, res) {
     if (isMatch) {
       fs.appendFile(
         "./userSignIn.txt",
-        `${req.body.first_name} logged in the Service`,
+        `${req.body.first_name} logged in the Service\n`,
         (err) => {
           if (err) {
             console.log("error writing User Login");

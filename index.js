@@ -6,8 +6,7 @@ const signIn = require("./routes/authentication.js");
 const EncryptPassword = require("./middlewares/passwordHash.js");
 const userAuthCheck = require("./middlewares/authCheck.js")
 const cookiesParser = require("cookie-parser")
-
-const app = express();
+ app = express();
 require("dotenv").config()
 const PORT = process.env.PORT
 
