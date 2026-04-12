@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(LogReqRes("./MiddlewareLogs.txt"));
 
 //mongoDB connection
+//using mongoDB Atlas now
 connectMongoDB(process.env.db_url);
 
 //routes
