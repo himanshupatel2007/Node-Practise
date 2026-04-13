@@ -5,6 +5,7 @@ function setUser(UserData) {
     {
       first_name: UserData.first_name,
       email: UserData.email,
+      role:UserData.role
     },
     process.env.secret_key,
   );

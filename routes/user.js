@@ -1,7 +1,7 @@
 const express = require("express");
-
+const authorizationcheck = require("../middlewares/authorization")
 const userRouter = express.Router();
-const signUp = express()
+const signUp = express.Router();
 const {
   GetAllUsers,
   GetUserById,
@@ -10,16 +10,15 @@ const {
   DeleteUserByID,
 } = require("../controllers");
 
-userRouter.get("/",GetAllUsers)
-
+userRouter.get("/",authorizationcheck(["ADMIN"]),GetAllUsers)
 signUp.post("/",CreateUser);
 
 userRouter
   .route("/:id")
-  .get(GetUserById)
-  .patch(UpdateUserbyID)
-  .delete(DeleteUserByID);
+  .get(authorizationcheck(["ADMIN","USER"]),GetUserById)
+  .patch(authorizationcheck(["ADMIN","USER"]),UpdateUserbyID)
+  .delete(authorizationcheck(["ADMIN","USER"]),DeleteUserByID);
 
 module.exports = {
   userRouter,signUp
-};
+}
