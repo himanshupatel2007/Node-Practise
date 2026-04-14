@@ -5,14 +5,14 @@ const bcrypt = require("bcrypt")
 async function GetAllUsers(req, res) {
     try {
         fs.appendFile(
-            "./logFile",
-            `${req.method} ${req.url} ${Date.now()}\n`,
+            "./logFile.txt",
+            `${req.method} ${req.url} ${new Date().toISOString()}\n`,
             (err) => {
                 if (err) console.log("Error appending log data to the file");
             },
         );
         const Users = await User.find({});
-        if (Users) {
+        if (!Users.length() === 0) {
             return res.status(200).json(Users);
         } else {
             return res.status(404).json({
@@ -73,7 +73,7 @@ async function GetUserById(req, res) {
 }
 async function UpdateUserbyID(req,res){
    try {
-     const result = await User.findByIdAndUpdate(req.params.id,req.body)
+     const result = await User.findByIdAndUpdate(req.params.id,req.body,{new:true,validation :true})
      console.log(`User updated by ID :${req.params.id} : ${result}`);
      res.status(200).json({
         message:"User Updated succesfully ",
@@ -93,7 +93,7 @@ async function DeleteUserByID(req,res){
             console.log("Error deleting User By ID : "+ req.params.id);
             fs.appendFile("./Error.txt",`${req.url} ${req.prams.id}`)
         })
-        rs.status(200).json({
+        res.status(200).json({
             message:"User delted successfully"
         })
     } catch (error) {
