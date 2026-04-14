@@ -5,6 +5,11 @@ const {setUser} = require("../services/jwt.js")
 
 async function handleUserSignIn(req, res) {
   try {
+    if(!req.body.first_name || !req.body.password){
+      return res.status(400).json({
+        meassage:"Fill all the required fields properly"
+      })
+    }
     const { first_name, password } = req.body;
 
     const user = await User.findOne({ first_name });
@@ -26,7 +31,11 @@ async function handleUserSignIn(req, res) {
           }
         },
       );
-     const token =  setUser(user)
+     const token =  setUser({
+      first_name :user.first_name,
+      email : user.email,
+      role: user.role
+     })
 
       return res.status(200).cookie("token",token,{
         httpOnly:true,
@@ -41,7 +50,7 @@ async function handleUserSignIn(req, res) {
     }
 
   } catch (error) {
-    console.log("Error user SignIn");
+    console.log("Error user SignIn",error);
     res.status(500).json({
       message: "internal server error signing User"
     })
