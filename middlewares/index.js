@@ -1,9 +1,9 @@
 const fs = require('fs')
 
-function LogReqRes(filename) {
+function LogReqRes() {
     return (req, res, next) => {
         fs.appendFile(
-            filename,
+            "../Logs/middlerwareLogs.txt",
             `${Date.now()} request resolved by hte middleware of ${req.method}\n`,
             (err) => {
                 if (err) {
