@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt")
 async function GetAllUsers(req, res) {
     try {
         fs.appendFile(
-            ".,/Logs/logFile.txt",
+            "./logFile.txt",
             `${req.method} ${req.url} ${new Date().toISOString()}\n`,
             (err) => {
                 if (err) console.log("Error appending log data to the file");
@@ -50,7 +50,7 @@ async function CreateUser(req, res) {
 async function GetUserById(req, res) {
     try {
         fs.appendFile(
-            "../Logs/logFileUsers",
+            "./logFileUsers",
             `${req.method} ${req.url} ${Date.now()}\n`,
             (err) => {
                 if (err) console.log("Error writing logs", err);
@@ -89,7 +89,7 @@ async function UpdateUserbyID(req,res){
 async function DeleteUserByID(req,res){
     try {
         const result =await  User.findByIdAndDelete(req.params.id)
-        fs.appendFile("../Logs/UserDeleteLog.txt",`${req.params.id} User Deleted ${result}`,(err)=>{
+        fs.appendFile("./UserDeleteLog.txt",`${req.params.id} User Deleted ${result}`,(err)=>{
             console.log("Error deleting User By ID : "+ req.params.id);
             fs.appendFile("./Error.txt",`${req.url} ${req.prams.id}`)
         })

@@ -23,7 +23,7 @@ async function handleUserSignIn(req, res) {
     const isMatch = await bcrypt.compare(password, user.password);
     if (isMatch) {
       fs.appendFile(
-        "../Logs/userSignIn.txt",
+        "./userSignIn.txt",
         `${req.body.first_name} logged in the Service\n`,
         (err) => {
           if (err) {

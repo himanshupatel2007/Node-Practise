@@ -16,12 +16,12 @@ const signIn = require("./routes/authentication.js");
 
 const PORT = process.env.PORT
 
-app = express();
+const app = express();
 app.use(cookiesParser())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(LogReqRes);
+app.use(LogReqRes());
 
 //mongoDB connection
 //using mongoDB Atlas now

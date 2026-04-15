@@ -3,7 +3,7 @@ const fs = require('fs')
 function LogReqRes() {
     return (req, res, next) => {
         fs.appendFile(
-            "../Logs/middlerwareLogs.txt",
+            "./middlerwareLogs.txt",
             `${Date.now()} request resolved by hte middleware of ${req.method}\n`,
             (err) => {
                 if (err) {
