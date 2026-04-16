@@ -7,7 +7,7 @@ async function handleUserSignIn(req, res) {
   try {
     if(!req.body.first_name || !req.body.password){
       return res.status(400).json({
-        meassage:"Fill all the required fields properly"
+        message:"Fill all the required fields properly"
       })
     }
     const { first_name, password } = req.body;
