@@ -1,18 +1,18 @@
-const express = require("express");
-const multer = require("multer")
-require("dotenv").config()
-const cookiesParser = require("cookie-parser")
+import express from "express";
+import multer from "multer"
+import "dotenv/config.js"
+import cookiesParser from "cookie-parser"
 const upload = multer({dest:"uploads/"})
 
-const connectMongoDB = require("./mongoDB_connection");
+import connectMongoDB  from "./mongoDB_connection.js";
 
-const LogReqRes = require("./middlewares");
-const EncryptPassword = require("./middlewares/passwordHash.js");
-const userAuthCheck = require("./middlewares/authCheck.js");
+import LogReqRes from "./middlewares/index.js"
+import EncryptPassword  from "middlewares/passwordHash.js";
+import userAuthCheck from "./middlewares/authCheck.js";
 
-const fileRouter = require("./routes/fileUpload.js")
-const {userRouter,signUp} = require("./routes/user");
-const signIn = require("./routes/authentication.js");
+import fileRouter from "./routes/fileUpload.js"
+import {userRouter,signUp} from "./routes/user.js";
+import signIn from "./routes/authentication.js";
 
 const PORT = process.env.PORT
 
